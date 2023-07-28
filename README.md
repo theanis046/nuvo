@@ -2,25 +2,41 @@
 
 ## Description
 
-- Implement a global prefix `/api`
-- Implement two resources (customers and products) with their respective CRUD endpoints
-- This endpoints should be protected to consume them, you need to login yourself to get a valid JWT(feel free to pick up library to validation).
--
+This project aims to create a backend solution for a web application. It consists of several parts, each focusing on different functionalities.
 
-NOTE: use mock data present at `/Constants/`
+### Part 1
+
+- Implement a global prefix `/api` to be used throughout the API.
+
+### Part 2
+
+- Implement a login endpoint, `/api/auth/login`, which allows users to authenticate and returns a valid JWT token upon successful login.
+- The JWT access token should have a validity of 120 seconds only and should contain the following payload: `userId` and `username`.
+
+### Part 3
+
+- Implement two resources, namely `customers` and `products`, along with their respective endpoints.
+- These endpoints should be protected, and users need to pass an authorization token in the headers to consume them.
+- Use mock data provided in the `/Mocks/` directory as the data source.
+
+### Part 4
+
+- Write test cases for your controllers and services to ensure the reliability of your code.
 
 ## Endpoints
 
-- `/api/auth/login`
-- `/api/auth/customers`
-- `/api/auth/products`
+- **Login**: `/api/auth/login`
+- **Customers**: `/api/auth/customers`
+- **Products**: `/api/auth/products`
 
 ## Impress us
 
-If you want to impress us, there are some tasks below. The tasks are not required, but they would be a plus to our consideration, reduce our technical questions.
+If you wish to make a lasting impression, consider completing the following tasks. While these tasks are optional, they will be taken into consideration and may reduce technical questions during the evaluation process:
 
-- Having a well-structured and organized project
-- Commenting your code
-- Adding rate limit
-- Writing unit tests
-- Implement over docker and docker-compose
+- Organize your project structure in a well-structured and clear manner.
+- Add comments to your code for better understanding and maintainability.
+- Implement rate limiting to control the rate of API requests.
+- Write unit tests to ensure the robustness of your code.
+- Provide Docker and Docker Compose support for easier deployment.
+
+Feel free to use your creativity and showcase your skills throughout the project! Good luck!
