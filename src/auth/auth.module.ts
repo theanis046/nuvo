@@ -6,13 +6,14 @@ import { UsersService } from 'src/users/users.service';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 
+const TOKEN_EXPIRY_TIME = '120s'; // should be in .env
 @Module({
   imports: [
     UsersModule,
     JwtModule.register({
       global: true,
-      secret: jwtConstants.secret,
-      signOptions: { expiresIn: '120s' },
+      secret: jwtConstants.secret, // TODO: Should get from .env
+      signOptions: { expiresIn: TOKEN_EXPIRY_TIME },
     }),
   ],
   providers: [AuthService, UsersService],

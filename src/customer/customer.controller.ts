@@ -1,36 +1,29 @@
 import {
-  Body,
   Controller,
   Get,
   HttpCode,
   HttpStatus,
-  Inject,
-  Post,
+  Param,
   UseGuards,
 } from '@nestjs/common';
-import { AuthGuard } from 'src/auth/auth.guard';
+import { AuthGuard } from '../auth/auth.guard';
+import { CustomerService } from './customer.service';
 
-const CustomerService = Symbol('customerService');
-
-@Controller('customer')
+@Controller('customers')
 export class CustomerController {
-  constructor(
-    @Inject(CustomerService) private readonly customerService: any, //Todo
-  ) {}
+  constructor(private readonly customerService: CustomerService) {}
 
   @UseGuards(AuthGuard)
   @HttpCode(HttpStatus.OK)
-  @Post('login')
-  signIn(@Body() signInDto: Record<string, any>) {
-    return this.customerService.getCustomers(
-      signInDto.username,
-      signInDto.password,
-    );
+  @Get()
+  getAllCustomers() {
+    return this.customerService.getAllCustomers();
   }
 
   @UseGuards(AuthGuard)
-  @Get()
-  getCustomers() {
-    return 'customer';
+  @HttpCode(HttpStatus.OK)
+  @Get(':id')
+  getCustomerById(@Param('id') id: string) {
+    return this.customerService.getCustomerById(id);
   }
 }
